@@ -1,24 +1,19 @@
 package ru.stqa.pft.sanbox;
 
-public class MyFirstProgram{
-     public static void main(String[] args)
-     {
-            hello("user");
-            hello ("world");
-            hello ("Alexei");
-            double l=5;
-            System.out.println("Площадь квадрата со стороной "+l+" равна "+area(l));
-            double a=4;
-            double b=6;
-            System.out.println("Площадь прямоугольника со сторонами "+a+" и "+b+" равна "+area(a,b));
+public class MyFirstProgram {
+
+     public static void main(String[] args) {
+          System.out.println("Расстояние между двумя точками равно:");
+
+          Point p= new Point(5,2,7,1);
+          System.out.println("Р1("+p.x1+";"+p.y1+")   P2("+p.x2+";"+p.y2+")   L="+ p.distance());
+          Point p1= new Point(8,6,0,9);
+          System.out.println("Р1("+p1.x1+";"+p1.y1+")   P2("+p1.x2+";"+p1.y2+")   L="+ p1.distance());
+          Point p2= new Point(5,9,9,1);
+          System.out.println("Р1("+p2.x1+";"+p2.y1+")   P2("+p2.x2+";"+p2.y2+")   L="+ p2.distance());
+
      }
-     public static void hello (String somebody){
-       System.out.println("Hello,"+somebody+"!");
-     }
-     public static double area (double len){
-       return len*len;
-     }
-     public static double area (double a, double b){
-       return a*b;
-     }
+
 }
+
+
