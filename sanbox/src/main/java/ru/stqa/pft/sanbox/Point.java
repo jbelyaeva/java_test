@@ -16,7 +16,7 @@ public class Point {
   public double distance(Point second){
     double xDistance = x - second.xCoordinate();
     double yDistance = y - second.yCoordinate();
-    double l = Math.sqrt(xDistance*xDistance+yDistance*yDistance);
+    double l = Math.round(Math.sqrt(xDistance*xDistance+yDistance*yDistance));
     return l;
   }
 
