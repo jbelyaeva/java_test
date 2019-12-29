@@ -11,7 +11,7 @@ public class MyFirstProgram {
       Square s=new Square(5);
       System.out.println("Площадь квадрата стороной"+s.l+"="+s.area());
       Rectangle r=new Rectangle(4,6);
-      System.out.println("Площадь прямоугольника со сторонами"+r.a+"и"+r.b+"="+r.area());
+      System.out.println("Площадь прямоугольника со сторонами "+r.a+" и "+r.b+" = "+r.area());
 
 //Расстояние между двумя точками на плоскости
           Point p1=new Point(5,7);
