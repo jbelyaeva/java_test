@@ -30,7 +30,7 @@ public class GroupCreationTests {
   public void testGroupCreation() throws Exception {
 
     gotoGroupPage();
-    initGroupCreation("new");
+    initGroupCreation();
     fillGroupForm(new GroupData("test1", "test2", "test3"));
     submitGroupCreation();
     returnToGroupPage();
@@ -57,8 +57,8 @@ public class GroupCreationTests {
     wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
-  private void initGroupCreation(String s) {
-    wd.findElement(By.name(s)).click();
+  private void initGroupCreation() {
+    wd.findElement(By.name("new")).click();
   }
 
   private void gotoGroupPage() {

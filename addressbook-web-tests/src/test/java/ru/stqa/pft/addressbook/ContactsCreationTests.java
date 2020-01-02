@@ -53,7 +53,6 @@ public class ContactsCreationTests {
     wd.findElement(By.name("address")).click();
     wd.findElement(By.name("address")).clear();
     wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Address:'])[1]/following::label[1]")).click();
     wd.findElement(By.name("home")).click();
     wd.findElement(By.name("home")).clear();
     wd.findElement(By.name("home")).sendKeys(contactData.getHomephone());
