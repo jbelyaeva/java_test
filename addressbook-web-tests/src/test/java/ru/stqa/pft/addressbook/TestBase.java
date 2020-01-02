@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
  // private WebDriver wd;
 public WebDriver wd ;
+
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
@@ -57,12 +58,47 @@ public WebDriver wd ;
     wd.findElement(By.linkText("groups")).click();
   }
 
+
+  private void logout() {
+    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  protected void submitContactCreation() {
+    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+  }
+
+  protected void fillContactForm(ContactData contactData) {
+    wd.findElement(By.name("firstname")).click();
+    wd.findElement(By.name("firstname")).clear();
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
+    wd.findElement(By.name("lastname")).click();
+    wd.findElement(By.name("lastname")).clear();
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
+    wd.findElement(By.name("address")).click();
+    wd.findElement(By.name("address")).clear();
+    wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
+    wd.findElement(By.name("home")).click();
+    wd.findElement(By.name("home")).clear();
+    wd.findElement(By.name("home")).sendKeys(contactData.getHomephone());
+    wd.findElement(By.name("mobile")).click();
+    wd.findElement(By.name("mobile")).clear();
+    wd.findElement(By.name("mobile")).sendKeys(contactData.getMobilephone());
+    wd.findElement(By.name("email")).click();
+    wd.findElement(By.name("email")).clear();
+    wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+  }
+
+  protected void gotoAddNewContact() {
+    wd.findElement(By.linkText("add new")).click();
+  }
+
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
+    logout();
     wd.quit();
 
-
   }
+
 
   private boolean isElementPresent(By by) {
     try {
@@ -73,6 +109,14 @@ public WebDriver wd ;
     }
   }
 
+   protected void deleteSelectedGroups() {
+    wd.findElement(By.name("delete")).click();
+  }
+
+  protected void selectGroup() {
+    wd.findElement(By.name("selected[]")).click();
+  }
+
   private boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
@@ -80,13 +124,5 @@ public WebDriver wd ;
     } catch (NoAlertPresentException e) {
       return false;
     }
-  }
-
-  protected void deleteSelectedGroups() {
-    wd.findElement(By.name("delete")).click();
-  }
-
-  protected void selectGroup() {
-    wd.findElement(By.name("selected[]")).click();
   }
 }
