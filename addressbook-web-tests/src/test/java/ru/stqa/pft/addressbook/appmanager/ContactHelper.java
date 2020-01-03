@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+
+import static org.testng.Assert.assertTrue;
+
 public class ContactHelper extends HelperBase {
 
 
@@ -37,4 +40,17 @@ public class ContactHelper extends HelperBase {
   public void gotoAddNewContact() {
     click(By.linkText("add new"));
   }
+
+  public void selectContacts() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedContacts() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
+
+  public void assertTrueDeletionContacts() {
+       wd.switchTo().alert().accept();
+  }
+
 }
