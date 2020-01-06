@@ -45,6 +45,6 @@ public class ContactData {
   }
 
   public String getGroup() {
-    return email;
+    return group;
   }
 }
