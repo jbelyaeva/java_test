@@ -1,9 +1,14 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
 
@@ -22,20 +27,27 @@ public class ContactHelper extends HelperBase {
     wd.findElement(locator).click();
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getName());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomephone());
     type(By.name("mobile"), contactData.getMobilephone());
     type(By.name("email"), contactData.getEmail());
-  }
 
-  //public void type(By locator, String text) {
-   // click(locator);
-    //wd.findElement(locator).clear();
-    //wd.findElement(locator).sendKeys(text);
-  //}
+   if (creation) {
+
+     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+   }
+    else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));}
+  }
+    public boolean isElementPresent(By locator){
+       try {wd.findElement(locator);
+            return true;}
+       catch (NoSuchElementException ex){return false;}
+    }
+
 
   public void gotoAddNewContact() {
     click(By.linkText("add new"));
