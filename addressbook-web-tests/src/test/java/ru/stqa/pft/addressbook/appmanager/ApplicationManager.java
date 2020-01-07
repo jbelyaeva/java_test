@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import ru.stqa.pft.addressbook.model.GroupData;
 //import sun.plugin2.util.BrowserType;
 
 import java.util.concurrent.TimeUnit;
@@ -59,5 +60,14 @@ public class ApplicationManager {
   }
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  //проверка перед созданием контакта на наличие хотя бы одной группы test1 c созданием ее в случае отсутствия
+  public void checkAndCreateGroup(GroupData group){
+    getNavigationHelper().gotoGroupPage();
+    if (!getGroupHelper().isThereAGroup()){
+      getGroupHelper().createGroup(new GroupData("test1", null, null));
+    }
+    getContactHelper().gotohome();
   }
 }
