@@ -7,12 +7,8 @@ public class Point {
     this.x =x;
     this.y =y;}
 
-  public double xCoordinate(){
-    return x;
-  }
-  public double yCoordinate(){
-    return y;
-  }
+  public double xCoordinate(){ return x; }
+  public double yCoordinate(){ return y; }
   public double distance(Point second){
     double xDistance = x - second.xCoordinate();
     double yDistance = y - second.yCoordinate();

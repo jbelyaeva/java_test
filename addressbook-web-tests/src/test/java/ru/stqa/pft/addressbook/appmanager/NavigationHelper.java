@@ -14,6 +14,6 @@ public class NavigationHelper extends HelperBase {
               && isElementPresent(By.name("new"))) {
         return;
       }
-      click(By.linkText("groups"));}
+      click(By.xpath("//li[@class='admin']"));}
   }
 

@@ -7,6 +7,7 @@ public class SessionHelper extends HelperBase {
     public SessionHelper(WebDriver wd) {
     super(wd);
   }
+
   public void login(String username, String passowd) {
     type(By.name("user"),username);
     type(By.name("pass"),passowd);
