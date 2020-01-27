@@ -70,12 +70,13 @@ public class GroupHelper extends HelperBase {
    List<GroupData> groups=new ArrayList<GroupData>();//указываем конкретный класс, кот реализует интерфейс list
     //получаем список объектоа типа WebElement
     //найти все элементы с тегом span и классoм group
-   List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+   List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));//это эл-т, внутри кот чек-бокс
    //element пробегает по спискус elements и из каждого элемента получаем текст имя группы
    for (WebElement element : elements){
      String name=element.getText();
+     String id=element.findElement(By.tagName("input")).getAttribute("value");//идентификатор, кот передаем в конструктор
      //создаем объект типа GroupData
-     GroupData group = new GroupData(name,null,null);
+     GroupData group = new GroupData(id, name,null,null);
      //добавляем созданный объект в список
      groups.add(group);
    }
