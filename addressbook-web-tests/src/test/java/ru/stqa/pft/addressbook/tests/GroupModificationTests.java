@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -29,9 +31,10 @@ public class GroupModificationTests extends TestBase {
     Assert.assertEquals(after.size(),before.size());
     before.remove(before.size()-1);//удаляем
     before.add(group);//добавляем
-    //среди все элементов, кот входят в список after найти максимальный
-
-    Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
+    Comparator<? super GroupData> byID= (g1,g2)->Integer.compare(g1.getId(),g2.getId());
+    before.sort(byID);
+    after.sort(byID);
+    Assert.assertEquals(before,after);
   }
 
 }
