@@ -19,7 +19,7 @@ public void testContactsModification(){
             "1111@11.com","test1" ),true);
   }
   int before = app.getContactHelper().getContactCount();
-  app.getContactHelper().submitContactModification();
+  app.getContactHelper().selectContactModification(before-1);
   app.getContactHelper().fillContactForm(new ContactData("1","2","3","4",
           "5","6",null),false);
   app.getContactHelper().submitContactUpdate();
