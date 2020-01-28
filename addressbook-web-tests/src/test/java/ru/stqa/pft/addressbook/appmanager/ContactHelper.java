@@ -87,4 +87,8 @@ public class ContactHelper extends HelperBase {
   public boolean isTereAContact() {
     return isElementPresent(By.xpath("//img[@alt='Edit']"));
   }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();// получаем размер списка элементов
+  }
 }
