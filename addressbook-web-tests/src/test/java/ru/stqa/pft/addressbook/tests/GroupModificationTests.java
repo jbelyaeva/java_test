@@ -24,11 +24,13 @@ public class GroupModificationTests extends TestBase {
     app.getGroupHelper().fillGroupForm(group);
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
-   // int after =app.getGroupHelper().getGroupCount();
+
     List<GroupData> after=app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(),before.size());
     before.remove(before.size()-1);//удаляем
     before.add(group);//добавляем
+    //среди все элементов, кот входят в список after найти максимальный
+
     Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
   }
 
