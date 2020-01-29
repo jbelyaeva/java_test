@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactsModificationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-29T17:40:21" hostname="DESKTOP-TKCAAQ5" time="9.174">
+  <properties/>
+  <testcase name="testContactsModification" classname="ru.stqa.pft.addressbook.tests.ContactsModificationTests" time="9.174"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 48563
+Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+[1580319617.857][WARNING]: Timed out connecting to Chrome, retrying...
+янв 29, 2020 8:40:19 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+]]></system-err>
+</testsuite>
