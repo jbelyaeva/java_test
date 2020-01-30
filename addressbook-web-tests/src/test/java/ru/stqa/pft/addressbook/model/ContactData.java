@@ -3,9 +3,14 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private final String id;
+  private int id;
   private final String name;
   private final String lastname;
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
   private final String address;
   private final String homephone;
   private final String mobilephone;
@@ -13,11 +18,12 @@ public class ContactData {
   private String group;
 
 
-    public String getId() {
+
+  public int getId() {
     return id;
   }
 
-  public ContactData(String id, String name, String lastname, String address, String homephone, String mobilephone, String email,
+  public ContactData(int id, String name, String lastname, String address, String homephone, String mobilephone, String email,
                      String group) {
     this.id = id;
     this.name = name;
@@ -30,7 +36,7 @@ public class ContactData {
   }
   public ContactData( String name, String lastname, String address, String homephone, String mobilephone, String email,
                      String group) {
-    this.id = null;
+    this.id = 0;
     this.name = name;
     this.lastname = lastname;
     this.address = address;
@@ -80,7 +86,7 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(id, that.id) &&
+    return id == that.id &&
             Objects.equals(name, that.name) &&
             Objects.equals(lastname, that.lastname);
   }
@@ -89,5 +95,4 @@ public class ContactData {
   public int hashCode() {
     return Objects.hash(id, name, lastname);
   }
-
 }
