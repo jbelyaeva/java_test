@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ContactsDeletionTests extends TestBase {
@@ -27,6 +28,7 @@ public class ContactsDeletionTests extends TestBase {
     Assert.assertEquals(after.size(),before.size()-1);
     before.remove(before.size()-1);
     Assert.assertEquals(before, after);
+
 
   }
 }

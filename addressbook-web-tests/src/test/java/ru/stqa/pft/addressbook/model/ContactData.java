@@ -34,9 +34,11 @@ public class ContactData {
     this.email = email;
     this.group = group;
   }
-  public ContactData( String name, String lastname, String address, String homephone, String mobilephone, String email,
+
+
+  public ContactData(String name, String lastname, String address, String homephone, String mobilephone, String email,
                      String group) {
-    this.id = 0;
+    this.id = Integer.MAX_VALUE;
     this.name = name;
     this.lastname = lastname;
     this.address = address;
@@ -81,18 +83,18 @@ public class ContactData {
             ", lastname='" + lastname + '\'' +
             '}';
   }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(name, that.name) &&
+    return Objects.equals(name, that.name) &&
             Objects.equals(lastname, that.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, lastname);
+    return Objects.hash(name, lastname);
   }
 }
