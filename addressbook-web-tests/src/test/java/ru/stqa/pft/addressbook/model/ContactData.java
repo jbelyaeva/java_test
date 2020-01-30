@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
+  private final String id;
   private final String name;
   private final String lastname;
   private final String address;
@@ -11,8 +12,25 @@ public class ContactData {
   private final String email;
   private String group;
 
-  public ContactData(String name, String lastname, String address, String homephone, String mobilephone, String email,
+
+    public String getId() {
+    return id;
+  }
+
+  public ContactData(String id, String name, String lastname, String address, String homephone, String mobilephone, String email,
                      String group) {
+    this.id = id;
+    this.name = name;
+    this.lastname = lastname;
+    this.address = address;
+    this.homephone = homephone;
+    this.mobilephone = mobilephone;
+    this.email = email;
+    this.group = group;
+  }
+  public ContactData( String name, String lastname, String address, String homephone, String mobilephone, String email,
+                     String group) {
+    this.id = null;
     this.name = name;
     this.lastname = lastname;
     this.address = address;
@@ -55,24 +73,21 @@ public class ContactData {
     return "ContactData{" +
             "name='" + name + '\'' +
             ", lastname='" + lastname + '\'' +
-            ", address='" + address + '\'' +
-            ", homephone='" + homephone + '\'' +
             '}';
   }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(name, that.name) &&
-            Objects.equals(lastname, that.lastname) &&
-            Objects.equals(address, that.address) &&
-            Objects.equals(homephone, that.homephone);
+    return Objects.equals(id, that.id) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(lastname, that.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, lastname, address, homephone);
+    return Objects.hash(id, name, lastname);
   }
+
 }
