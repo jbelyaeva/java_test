@@ -51,23 +51,23 @@ public class ApplicationManager {
     logout();
     wd.quit();
   }
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
 
-  public ContactHelper getContactHelper() {
+  public ContactHelper contact() {
     return contactHelper;
   }
-  public NavigationHelper getNavigationHelper() {
+  public NavigationHelper goTo() {
     return navigationHelper;
   }
 
   //проверка перед созданием контакта на наличие хотя бы одной группы test1 c созданием ее в случае отсутствия
   public void checkAndCreateGroup(GroupData group){
-    getNavigationHelper().gotoGroupPage();
-    if (!getGroupHelper().isThereAGroup()){
-      getGroupHelper().createGroup(new GroupData("test1", null, null));
+    goTo().groupPage();
+    if (!group().isThereAGroup()){
+      group().create(new GroupData("test1", null, null));
     }
-    getContactHelper().gotohome();
+    contact().gotohome();
   }
 }

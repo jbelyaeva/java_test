@@ -21,15 +21,12 @@ public class ContactHelper extends HelperBase {
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
-
   public void submitContactCreation() {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
-
   public void click(By locator) {
     wd.findElement(locator).click();
   }
-
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getName());
     type(By.name("lastname"), contactData.getLastname());
@@ -37,26 +34,19 @@ public class ContactHelper extends HelperBase {
     type(By.name("home"), contactData.getHomephone());
     type(By.name("mobile"), contactData.getMobilephone());
     type(By.name("email"), contactData.getEmail());
-
-   if (creation) {
-     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-   }
+    if (creation) {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }
     else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));}
-  }
+    }
     public boolean isElementPresent(By locator){
        try {wd.findElement(locator);
             return true;}
        catch (NoSuchElementException ex){return false;}
     }
 
-  public void modifyContact(int index, ContactData contact) {
-    selectContactModification(index);
-    fillContactForm(contact,false);
-    submitContactUpdate();
-    gotohome();
-  }
-  public void gotoAddNewContact() {
+   public void gotoAddNewContact() {
     click(By.linkText("add new"));
   }
 
@@ -80,13 +70,25 @@ public class ContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void createContact(ContactData contact, boolean b) {
+  public void create(ContactData contact, boolean b) {
     gotoAddNewContact();
     fillContactForm(contact,b);
     submitContactCreation();
     gotohome();
   }
 
+  public void modify(int index, ContactData contact) {
+    selectContactModification(index);
+    fillContactForm(contact,false);
+    submitContactUpdate();
+    gotohome();
+  }
+
+  public void delete(int index) {
+   selectContacts(index);
+   deleteSelectedContacts();
+   assertTrueDeletionContacts();
+  }
   public void gotohome() {
      click(By.linkText("home"));
    }
@@ -99,7 +101,7 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();// получаем размер списка элементов
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts= new ArrayList<ContactData>();
     List<WebElement> elements= wd.findElements(By.name("entry"));
    for (WebElement element : elements) {

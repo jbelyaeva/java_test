@@ -49,20 +49,26 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void createGroup(GroupData group) {
+  public void create(GroupData group) {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
     returnToGroupPage();
   }
-  public void modifyGroup(int index, GroupData group) {
+  public void modify(int index, GroupData group) {
    selectGroup(index);
    initGroupModification();
    fillGroupForm(group);
    submitGroupModification();
    returnToGroupPage();
   }
-// проверяется наличие элемента, который хотим выбрать в selectGroup
+  public void delete(int index) {
+    selectGroup(index);
+    deleteSelectedGroups();
+    returnToGroupPage();
+  }
+
+  // проверяется наличие элемента, который хотим выбрать в selectGroup
   public boolean isThereAGroup() {
   return isElementPresent(By.name("selected[]"));
 
@@ -72,7 +78,7 @@ public class GroupHelper extends HelperBase {
      return wd.findElements(By.name("selected[]")).size();
      }
 
-  public List<GroupData> getGroupList() {
+  public List<GroupData> list() {
     //создаем список, который будем заполнять
    List<GroupData> groups=new ArrayList<GroupData>();//указываем конкретный класс, кот реализует интерфейс list
     //получаем список объектоа типа WebElement

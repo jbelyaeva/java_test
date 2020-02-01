@@ -11,28 +11,28 @@ public class GroupDeletionTests extends TestBase{
 
   @BeforeMethod
   public void ensurePreconditions (){
-    app.getNavigationHelper().gotoGroupPage();
+    app.goTo().groupPage();
     //если не сущ ни одной группы, то создать новую
-    if (!app.getGroupHelper().isThereAGroup()){
-      app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+    if (app.group().list().size()==0){
+      app.group().create(new GroupData("test1", null, null));
     }
   }
 
   @Test
   public void testGroupDeletion() throws Exception {
-    List<GroupData> before=app.getGroupHelper().getGroupList();
-    app.getGroupHelper().selectGroup(before.size()-1);
-    app.getGroupHelper().deleteSelectedGroups();
-    app.getGroupHelper().returnToGroupPage();
-    List<GroupData> after=app.getGroupHelper().getGroupList();
+    List<GroupData> before=app.group().list();
+    int index=before.size()-1;
+    app.group().delete(index);
+    List<GroupData> after=app.group().list();
     Assert.assertEquals(after.size(),before.size()-1);//сравниваются размеры списка до и после удаления
 
-    before.remove(before.size()-1);//Удаляем ненужный элемент элемент. старый список должен содержать
+    before.remove(index);//Удаляем ненужный элемент элемент. старый список должен содержать
                                          // столько же элементов, что и новый
     //проверяем соответствие элементов (два списка имеют одинаковый набор элементов)
     Assert.assertEquals(before, after);//сравниваем 2 списка
 
   }
+
 
 
 }
