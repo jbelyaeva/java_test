@@ -6,46 +6,53 @@ public class ContactData {
   private int id;
   private  String name;
   private String lastname;
+  private  String address;
+  private  String homephone;
+  private String mobilephone;
+  private  String email;
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+  public ContactData withName(String name) {
+    this.name = name;
+    return this;
   }
 
-  private final String address;
-  private final String homephone;
-  private final String mobilephone;
-  private final String email;
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withHomephone(String homephone) {
+    this.homephone = homephone;
+    return this;
+  }
+
+  public ContactData withMobilephone(String mobilephone) {
+    this.mobilephone = mobilephone;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
   private String group;
-
-
-
   public int getId() {
     return id;
-  }
-
-  public ContactData(int id, String name, String lastname, String address, String homephone, String mobilephone, String email,
-                     String group) {
-    this.id = Integer.MAX_VALUE;
-    this.name = name;
-    this.lastname = lastname;
-    this.address = address;
-    this.homephone = homephone;
-    this.mobilephone = mobilephone;
-    this.email = email;
-    this.group = group;
-  }
-
-
-  public ContactData(String name, String lastname, String address, String homephone, String mobilephone, String email,
-                     String group) {
-    this.id = Integer.MAX_VALUE;
-    this.name = name;
-    this.lastname = lastname;
-    this.address = address;
-    this.homephone = homephone;
-    this.mobilephone = mobilephone;
-    this.email = email;
-    this.group = group;
   }
 
   public String getName() {

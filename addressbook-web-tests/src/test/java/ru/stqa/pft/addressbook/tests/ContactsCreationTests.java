@@ -15,14 +15,13 @@ public class ContactsCreationTests extends TestBase {
     //проверить, что сущ группа test1, если нет,то создать её
     app.checkAndCreateGroup(new GroupData().withName("test1"));
     List<ContactData> before = app.contact().list();
-    ContactData contact= new ContactData("Саша", "Иванов",
-            "г. Москва ул.Строителей д.7 кв 9", "1111111111111", "22222222222",
-            "1111@11.com","test1");
+    ContactData contact= new ContactData().withName("Саша").withLastname("Иванов")
+            .withAddress("г. Москва ул.Строителей д.7 кв 9").withHomephone("1111111111111")
+            .withMobilephone("22222222222").withEmail("1111@11.com").withGroup("test1");
     app.contact().create(contact,true);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(),before.size()+1);
-
-    contact.setId(after.stream().max( (Comparator<ContactData>) (o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
+    contact.withId(after.stream().max( (Comparator<ContactData>) (o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
     before.add(contact);
 
     Comparator<? super ContactData> byId=(g1,g2)-> Integer.compare(g1.getId(),g2.getId());
