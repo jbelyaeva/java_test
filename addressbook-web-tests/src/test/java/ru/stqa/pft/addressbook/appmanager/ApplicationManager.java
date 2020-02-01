@@ -66,7 +66,7 @@ public class ApplicationManager {
   public void checkAndCreateGroup(GroupData group){
     goTo().groupPage();
     if (!group().isThereAGroup()){
-      group().create(new GroupData("test1", null, null));
+      group().create(new GroupData().withName("test1"));
     }
     contact().gotohome();
   }

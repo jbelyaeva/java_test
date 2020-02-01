@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class ContactData {
   private int id;
-  private final String name;
-  private final String lastname;
+  private  String name;
+  private String lastname;
 
   public void setId(int id) {
     this.id = id;
@@ -25,7 +25,7 @@ public class ContactData {
 
   public ContactData(int id, String name, String lastname, String address, String homephone, String mobilephone, String email,
                      String group) {
-    this.id = id;
+    this.id = Integer.MAX_VALUE;
     this.name = name;
     this.lastname = lastname;
     this.address = address;

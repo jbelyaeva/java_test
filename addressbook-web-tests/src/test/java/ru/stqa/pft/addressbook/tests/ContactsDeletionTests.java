@@ -14,7 +14,7 @@ public class ContactsDeletionTests extends TestBase {
     //если не сущ ни одного контакта сначала создать его
     if (app.contact().list().size()==0){
       //если не сущ ни одной группы,то создать группу, чтобы в последствии выбрать ее из выпадающего списка при создании контакта
-      app.checkAndCreateGroup(new GroupData("test1", null, null));
+      app.checkAndCreateGroup(new GroupData().withName("test1"));
       app.contact().create(new ContactData("Саша", "Иванов",
               "г. Москва ул.Строителей д.7 кв 9", "1111111111111", "22222222222",
               "1111@11.com","test1" ),true);

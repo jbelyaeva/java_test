@@ -13,7 +13,7 @@ public class ContactsCreationTests extends TestBase {
   @Test
   public void testContactsCreation() throws Exception {
     //проверить, что сущ группа test1, если нет,то создать её
-    app.checkAndCreateGroup(new GroupData("test1", null, null));
+    app.checkAndCreateGroup(new GroupData().withName("test1"));
     List<ContactData> before = app.contact().list();
     ContactData contact= new ContactData("Саша", "Иванов",
             "г. Москва ул.Строителей д.7 кв 9", "1111111111111", "22222222222",
