@@ -50,7 +50,12 @@ public class ContactHelper extends HelperBase {
        catch (NoSuchElementException ex){return false;}
     }
 
-
+  public void modifyContact(int index, ContactData contact) {
+    selectContactModification(index);
+    fillContactForm(contact,false);
+    submitContactUpdate();
+    gotohome();
+  }
   public void gotoAddNewContact() {
     click(By.linkText("add new"));
   }
