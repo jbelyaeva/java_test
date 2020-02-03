@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -70,8 +71,8 @@ public class GroupHelper extends HelperBase {
      return wd.findElements(By.name("selected[]")).size();
      }
 
-  public Set<GroupData> all() {
-     Set<GroupData> groups=new HashSet<GroupData>();//указываем конкретный класс, кот реализует интерфейс list
+  public Groups all() {
+    Groups groups=new Groups();//указываем конкретный класс, кот реализует интерфейс list
     //получаем список объектоа типа WebElement
     //найти все элементы с тегом span и классoм group
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));//это эл-т, внутри кот чек-бокс
