@@ -72,7 +72,7 @@ public class GroupHelper extends HelperBase {
      }
 
   public Groups all() {
-    Groups groups=new Groups();//указываем конкретный класс, кот реализует интерфейс list
+    Groups groups=new Groups();
     //получаем список объектоа типа WebElement
     //найти все элементы с тегом span и классoм group
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));//это эл-т, внутри кот чек-бокс
