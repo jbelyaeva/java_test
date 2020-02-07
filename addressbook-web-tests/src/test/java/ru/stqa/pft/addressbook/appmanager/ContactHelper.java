@@ -39,6 +39,8 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
+    attach(By.name("photo"), contactData.getPhoto());
+
 
     if (creation) {
         new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -136,9 +138,7 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String lastname =cells.get(1).getText();
       String name =cells.get(2).getText();
-      //String[] phones = cells.get(5).getText().split("\n");//разбить строку на выражения
       String allPhones= cells.get(5).getText();
-     // String[] emails = cells.get(4).getText().split("\n");
       String allEmails= cells.get(4).getText();
       String address = cells.get(3).getText();
       //contacts.add(new ContactData().withId(id).withName(name).withLastname(lastname).withAddress(address).withEmail1(emails[0]).withEmail2(emails[1]).withEmail3(emails[2]).withHomephone(phones[0]).withMobilephone(phones[1]).withWorkphone(phones[2]));
