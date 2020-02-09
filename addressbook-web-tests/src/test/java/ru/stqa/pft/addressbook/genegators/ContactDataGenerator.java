@@ -49,19 +49,20 @@ public class ContactDataGenerator {
     xStream.processAnnotations(ContactData.class);
     xStream.alias("contact",ContactData.class);
     String xml=xStream.toXML(contacts);
-    Writer writer=new FileWriter(file);
-    writer.write(xml);
-    writer.close();
-  }
+    try ( Writer writer=new FileWriter(file)){
+      writer.write(xml);
+    }
+   }
 
   private static void saveAsCsv(List<ContactData> contacts, File file) throws IOException {// если возникнет исключение - выбросить его в main
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer=new FileWriter(file);//открываем файл на запись
-    for(ContactData contact : contacts){
-      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%\n",contact.getName(), contact.getLastname(), contact.getAddress(), contact.getEmail1()
-              ,contact.getEmail2(),contact.getEmail3(), contact.getHomephone(), contact.getMobilephone(),contact.getWorkphone(),contact.getGroup()));
+    try (Writer writer=new FileWriter(file)) {
+      for (ContactData contact : contacts) {
+        writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%\n", contact.getName(), contact.getLastname(), contact.getAddress(), contact.getEmail1()
+                , contact.getEmail2(), contact.getEmail3(), contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone(), contact.getGroup()));
+      }
     }
-    writer.close();//закрыть файл
+
   }
   private static List<ContactData> generateContacts (int count) {
     List<ContactData> contacts= new ArrayList<ContactData>();
