@@ -1,0 +1,14 @@
+<list>
+  <contact>
+    <name>Name0</name>
+    <lastname>LastName0</lastname>
+    <address>Address0</address>
+    <homephone>11111-0</homephone>
+    <mobilephone>22222-0</mobilephone>
+    <workphone>33333-0</workphone>
+    <email1>email1_0@bk.ru</email1>
+    <email2>email2_0@bk.ru</email2>
+    <email3>email3_0@bk.ru</email3>
+    <group>test 0</group>
+  </contact>
+</list>

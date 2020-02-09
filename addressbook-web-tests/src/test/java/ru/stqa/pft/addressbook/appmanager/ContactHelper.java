@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -9,14 +10,8 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-import static org.testng.Assert.assertTrue;
 
 public class ContactHelper extends HelperBase {
 
@@ -30,20 +25,21 @@ public class ContactHelper extends HelperBase {
   public void click(By locator) {
     wd.findElement(locator).click();
   }
-  public void fillContactForm(ContactData contactData, boolean creation) {
+  public void fillContactForm(@NotNull ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getName());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomephone());
     type(By.name("mobile"), contactData.getMobilephone());
+    type(By.name("work"), contactData.getWorkphone());
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     attach(By.name("photo"), contactData.getPhoto());
-
+  // type(By.name("new_group"), contactData.getGroup());
 
     if (creation) {
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     }
     else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));}
