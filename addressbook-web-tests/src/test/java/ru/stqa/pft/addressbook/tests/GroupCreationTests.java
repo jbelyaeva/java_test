@@ -1,12 +1,11 @@
 package ru.stqa.pft.addressbook.tests;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
-
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +14,11 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
+  //Logger logger = LoggerFactory.getLogger(GroupCreationTests.class);
+ // Logger logger= LoggerFactory.getLogger(GroupCreationTests.class);
 
   @DataProvider
-  public Iterator<Object[]> validGroups() throws IOException {
+  public Iterator<Object[]> validGroupsFromXML() throws IOException {
 
     try ( BufferedReader reader= new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")))) {
       String xml = "";
@@ -33,7 +34,7 @@ public class GroupCreationTests extends TestBase {
     }
   }
 
-  @Test (dataProvider = "validGroups")
+  @Test (dataProvider = "validGroupsFromXML")
   public void testGroupCreation(GroupData group)  {
       app.goTo().groupPage();
       Groups before = app.group().all();
@@ -42,7 +43,6 @@ public class GroupCreationTests extends TestBase {
       Groups after = app.group().all();
       assertThat(after, equalTo(before
               .withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-
   }
 
   @Test
