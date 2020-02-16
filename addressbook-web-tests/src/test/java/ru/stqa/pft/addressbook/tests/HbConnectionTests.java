@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.awt.*;
@@ -18,9 +19,7 @@ public class HbConnectionTests {
   @BeforeClass
   protected void setUp() throws Exception{
     final StandardServiceRegistry registry= new StandardServiceRegistryBuilder().configure().build();
-       //     .configure()
-      //      .build();
-    try{
+     try{
       sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     } catch (Exception e){
       e.printStackTrace();
@@ -37,7 +36,15 @@ public class HbConnectionTests {
     for (GroupData group:result){
     System.out.println(group);
      }
+    Session session1 = sessionFactory.openSession();
+    session1.beginTransaction();
+    List<ContactData> result1=session1.createQuery("from ContactData").list();
+    for (ContactData contact:result1){
+      System.out.println(contact);
+    }
   session.getTransaction().commit();
+  session1.getTransaction().commit();
   session.close();
+  session1.close();
   }
 }
