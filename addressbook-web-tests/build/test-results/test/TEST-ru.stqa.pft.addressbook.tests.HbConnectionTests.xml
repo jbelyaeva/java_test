@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.HbConnectionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-16T17:24:12" hostname="DESKTOP-TKCAAQ5" time="0.307">
+  <properties/>
+  <testcase name="testHbConnection" classname="ru.stqa.pft.addressbook.tests.HbConnectionTests" time="0.307"/>
+  <system-out><![CDATA[20:24:11.451 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.1.0.Final}
+20:24:11.456 [Test worker] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+20:24:11.459 [Test worker] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+20:24:11.684 [Test worker] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+20:24:11.791 [Test worker] WARN  org.hibernate.orm.connections - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+20:24:11.799 [Test worker] INFO  org.hibernate.orm.connections - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/addressbook?serverTimezone=UTC]
+20:24:11.800 [Test worker] INFO  org.hibernate.orm.connections - HHH10001001: Connection properties: {user=root, password=}
+20:24:11.800 [Test worker] INFO  org.hibernate.orm.connections - HHH10001003: Autocommit mode: false
+20:24:11.803 [Test worker] INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 1 (min=1)
+20:24:12.011 [Test worker] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+20:24:12.689 [Test worker] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select groupdata0_.group_id as group_id1_0_, groupdata0_.group_footer as group_fo2_0_, groupdata0_.group_header as group_he3_0_, groupdata0_.group_name as group_na4_0_ from group_list groupdata0_
+GroupData{id='123', name='test 1'}
+GroupData{id='124', name='test 2'}
+GroupData{id='125', name='test 3'}
+GroupData{id='129', name='test 0'}
+GroupData{id='159', name='test 0'}
+]]></system-out>
+  <system-err><![CDATA[Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+]]></system-err>
+</testsuite>
