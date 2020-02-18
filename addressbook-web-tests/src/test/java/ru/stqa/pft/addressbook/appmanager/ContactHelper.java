@@ -36,14 +36,28 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     attach(By.name("photo"), contactData.getPhoto());
-  // type(By.name("new_group"), contactData.getGroup());
-
+    type(By.name("new_group"), contactData.getGroup());// нет в базе
     if (creation) {
-       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     }
     else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));}
     }
+
+  public void fillContactFormWithoutGroup(@NotNull ContactData contactData) {
+    type(By.name("firstname"), contactData.getName());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHomephone());
+    type(By.name("mobile"), contactData.getMobilephone());
+    type(By.name("work"), contactData.getWorkphone());
+    type(By.name("email"), contactData.getEmail1());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
+    // attach(By.name("photo"), contactData.getPhoto());
+    // type(By.name("new_group"), contactData.getGroup());// нет в базе
+  }
+
     public boolean isElementPresent(By locator){
        try {wd.findElement(locator);
             return true;}
@@ -83,11 +97,18 @@ public class ContactHelper extends HelperBase {
     submitContactCreation();
     gotohome();
   }
+  public void createWithoutGgoup(ContactData contact) {
+    gotoAddNewContact();
+    fillContactFormWithoutGroup(contact);
+    submitContactCreation();
+    gotohome();
+  }
 
   public void modify(ContactData contact) {
     selectContactsById(contact.getId());//выделить контакт для модификации
     selectContactModification(contact.getId()); //нажать карандаш
-    fillContactForm(contact,false);//модифицировать контакт
+  //  fillContactForm(contact,false);//В БАЗЕ НЕТ ГРУППЫ
+    fillContactFormWithoutGroup(contact);
     submitContactUpdate();
     gotohome();
   }
@@ -166,5 +187,9 @@ public class ContactHelper extends HelperBase {
     WebElement row=checkbox.findElement(By.xpath("./../.."));
     List<WebElement> cells=row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();
+  }
+
+  public int count() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }

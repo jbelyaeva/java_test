@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -32,12 +33,14 @@ public class ContactsModificationTests extends TestBase {
   }
   @Test
 public void testContactsModification(){
-  Contacts before = app.contact().all();
+ // Contacts before = app.contact().all();
+    Contacts before=app.db().contacts();
   ContactData modifiedContact = before.iterator().next();
   ContactData contact = new ContactData().withId(modifiedContact.getId()).withName("1").withLastname("2").withAddress("3")
                          .withHomephone("4").withMobilephone("5").withWorkphone("6").withEmail1("7").withEmail2("8").withEmail3("9");
   app.contact().modify(contact);
-  Contacts after = app.contact().all();
+//  Contacts after = app.contact().all();
+    Contacts after=app.db().contacts();
   assertEquals(after.size(),before.size());
   assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
 }

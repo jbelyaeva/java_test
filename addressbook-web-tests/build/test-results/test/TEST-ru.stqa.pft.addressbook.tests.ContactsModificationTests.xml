@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactsModificationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T09:58:09" hostname="DESKTOP-TKCAAQ5" time="2.72">
+  <properties/>
+  <testcase name="testContactsModification" classname="ru.stqa.pft.addressbook.tests.ContactsModificationTests" time="2.72"/>
+  <system-out><![CDATA[12:58:08.561 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start testtestContactsModification with parametrs []
+12:58:09.208 [Test worker] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select contactdat0_.id as id1_0_, contactdat0_.address as address2_0_, contactdat0_.email as email3_0_, contactdat0_.email2 as email4_0_, contactdat0_.email3 as email5_0_, contactdat0_.home as home6_0_, contactdat0_.lastname as lastname7_0_, contactdat0_.mobile as mobile8_0_, contactdat0_.firstname as firstnam9_0_, contactdat0_.work as work10_0_ from addressbook contactdat0_
+Hibernate: select contactdat0_.id as id1_0_, contactdat0_.address as address2_0_, contactdat0_.email as email3_0_, contactdat0_.email2 as email4_0_, contactdat0_.email3 as email5_0_, contactdat0_.home as home6_0_, contactdat0_.lastname as lastname7_0_, contactdat0_.mobile as mobile8_0_, contactdat0_.firstname as firstnam9_0_, contactdat0_.work as work10_0_ from addressbook contactdat0_
+12:58:11.889 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop testtestContactsModification
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

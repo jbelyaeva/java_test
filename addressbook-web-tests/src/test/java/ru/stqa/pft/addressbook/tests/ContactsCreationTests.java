@@ -21,8 +21,6 @@ import static org.hamcrest.MatcherAssert.*;
 public class ContactsCreationTests extends TestBase {
   @DataProvider
   public Iterator<Object[]> validContacts() throws IOException {
-
-   // List<Object[]> list=new ArrayList<Object[]>();
     try (BufferedReader reader= new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))){
     String xml = "";
     String line =reader.readLine();
@@ -39,11 +37,12 @@ public class ContactsCreationTests extends TestBase {
   @Test (dataProvider = "validContacts")
   public void testContactsCreation(ContactData contact) throws Exception {
     //проверить, что сущ группа test1, если нет,то создать её
-    app.checkAndCreateGroup(new GroupData().withName("test1"));
-
-    Contacts before = app.contact().all();
-    app.contact().create(contact,true);
-    Contacts after = app.contact().all();
+    app.checkAndCreateGroup(new GroupData().withName("test 1"));
+    Contacts before=app.db().contacts();
+  //  app.contact().create(contact, true);//КОНТАКТ С ГРУППОЙ
+    app.contact().createWithoutGgoup(contact); //КОНТАКТ БЕЗ ГРУППЫ, ПОТОМУ ЧТО В БАЗЕ ГРУППЫ НЕТ
+   // Contacts after = app.contact().all();
+    Contacts after=app.db().contacts();
     assertThat(after.size(), equalTo(before.size()+1));
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt()))));
         }
