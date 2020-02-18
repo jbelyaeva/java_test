@@ -36,6 +36,7 @@ public class GroupDeletionTests extends TestBase{
  //   Groups after=app.group().all();
   //  Assert.assertEquals(after.size(),before.size()-1);//сравниваются размеры списка до и после удаления
     assertThat(after, equalTo(before.without(deletedGroup)));
+    verifyGroupListInUI();
   }
 
 
