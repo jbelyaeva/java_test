@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +36,12 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
-    attach(By.name("photo"), contactData.getPhoto());
-    type(By.name("new_group"), contactData.getGroup());// нет в базе
-    if (creation) {
-     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+   // attach(By.name("photo"), contactData.getPhoto());
+  //  type(By.name("new_group"), contactData.getGroup());// нет в базе
+
+    if (contactData.getGroups().size()>0) {
+      Assert.assertTrue(contactData.getGroups().size()==1);
+     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
     }
     else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));}
@@ -97,6 +100,7 @@ public class ContactHelper extends HelperBase {
     submitContactCreation();
     gotohome();
   }
+
   public void createWithoutGgoup(ContactData contact) {
     gotoAddNewContact();
     fillContactFormWithoutGroup(contact);

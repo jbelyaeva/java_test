@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.ContactAddressTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T11:34:38" hostname="DESKTOP-TKCAAQ5" time="4.684">
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactAddressTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T18:47:32" hostname="DESKTOP-TKCAAQ5" time="5.106">
   <properties/>
-  <testcase name="testContactAddress" classname="ru.stqa.pft.addressbook.tests.ContactAddressTests" time="4.684"/>
-  <system-out><![CDATA[14:34:36.227 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start testtestContactAddress with parametrs []
-14:34:42.718 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop testtestContactAddress
+  <testcase name="testContactAddress" classname="ru.stqa.pft.addressbook.tests.ContactAddressTests" time="5.106"/>
+  <system-out><![CDATA[21:47:30.980 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start testtestContactAddress with parametrs []
+21:47:37.204 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop testtestContactAddress
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

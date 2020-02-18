@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -37,10 +38,11 @@ public class ContactsCreationTests extends TestBase {
   @Test (dataProvider = "validContacts")
   public void testContactsCreation(ContactData contact) throws Exception {
     //проверить, что сущ группа test1, если нет,то создать её
+    Groups groups=app.db().groups();
     app.checkAndCreateGroup(new GroupData().withName("test 1"));
     Contacts before=app.db().contacts();
-  //  app.contact().create(contact, true);//КОНТАКТ С ГРУППОЙ  Contacts after = app.contact().all();
-    app.contact().createWithoutGgoup(contact); //КОНТАКТ БЕЗ ГРУППЫ, ПОТОМУ ЧТО В БАЗЕ ГРУППЫ НЕТ
+    app.contact().create(contact, true);//КОНТАКТ С ГРУППОЙ  Contacts after = app.contact().all();
+//    app.contact().createWithoutGgoup(contact); //КОНТАКТ БЕЗ ГРУППЫ, ПОТОМУ ЧТО В БАЗЕ ГРУППЫ НЕТ
     Contacts after=app.db().contacts();
     assertThat(after.size(), equalTo(before.size()+1));
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt()))));
