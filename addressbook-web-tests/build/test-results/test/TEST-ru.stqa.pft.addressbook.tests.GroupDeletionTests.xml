@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T11:24:54" hostname="DESKTOP-TKCAAQ5" time="1.287">
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T11:35:20" hostname="DESKTOP-TKCAAQ5" time="0.844">
   <properties/>
-  <testcase name="testGroupDeletion" classname="ru.stqa.pft.addressbook.tests.GroupDeletionTests" time="1.287"/>
-  <system-out><![CDATA[14:24:53.509 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start testtestGroupDeletion with parametrs []
-14:24:54.637 [Test worker] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+  <testcase name="testGroupDeletion" classname="ru.stqa.pft.addressbook.tests.GroupDeletionTests" time="0.844"/>
+  <system-out><![CDATA[14:35:18.970 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start testtestGroupDeletion with parametrs []
 Hibernate: select groupdata0_.group_id as group_id1_1_, groupdata0_.group_footer as group_fo2_1_, groupdata0_.group_header as group_he3_1_, groupdata0_.group_name as group_na4_1_ from group_list groupdata0_
 Hibernate: select groupdata0_.group_id as group_id1_1_, groupdata0_.group_footer as group_fo2_1_, groupdata0_.group_header as group_he3_1_, groupdata0_.group_name as group_na4_1_ from group_list groupdata0_
-14:24:55.757 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop testtestGroupDeletion
+14:35:20.879 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop testtestGroupDeletion
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
