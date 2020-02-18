@@ -46,8 +46,7 @@ public class ContactData {
   private String allEmails;
   @Transient
   private String group;
-
-   @Transient
+  @Transient
   @Column(name="photo")
   @Type(type="text")
   private String photo;
@@ -55,7 +54,6 @@ public class ContactData {
  public File getPhoto() {
     return new File (photo);
   }
-
   public ContactData withPhoto(File photo) {
     this.photo = photo.getPath();
     return this;
@@ -162,6 +160,18 @@ public class ContactData {
     return email1;
   }
 
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
+  }
+
+  public String getGroup() {
+    return group;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -186,18 +196,6 @@ public class ContactData {
     return Objects.hash(id, name, lastname, address, homephone, mobilephone, workphone, email1, email2, email3, allPhones, allEmails);
   }
 
-  public String getEmail2() {
-    return email2;
-  }
-
-  public String getEmail3() {
-    return email3;
-  }
-
-  public String getGroup() {
-    return group;
-  }
-
   @Override
   public String toString() {
     return "ContactData{" +
@@ -213,8 +211,7 @@ public class ContactData {
             ", email3='" + email3 + '\'' +
             ", allPhones='" + allPhones + '\'' +
             ", allEmails='" + allEmails + '\'' +
-         //   ", group='" + group + '\'' +
-            '}';
+           '}';
   }
 
 }

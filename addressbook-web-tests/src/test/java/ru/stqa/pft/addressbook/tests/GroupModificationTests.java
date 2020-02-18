@@ -24,8 +24,7 @@ public class GroupModificationTests extends TestBase {
    }
   @Test
   public void testGroupModification(){
-    //Groups before=app.group().all();
-   Groups before=app.db().groups();
+    Groups before=app.db().groups();
     GroupData modifiedGroup=before.iterator().next();
     int index=before.size()-1;
     GroupData group = new GroupData()
@@ -33,11 +32,9 @@ public class GroupModificationTests extends TestBase {
     app.goTo().groupPage();
     app.group().modify(group);
     assertThat(app.group().count(), equalTo(before.size()));//хеширование
-   // Groups after=app.group().all();
     Groups after=app.db().groups();
     assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
+    verifyGroupListInUI();
   }
-
-
 
 }
