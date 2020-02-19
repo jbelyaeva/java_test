@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.ContactEmailTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-18T18:47:39" hostname="DESKTOP-TKCAAQ5" time="6.706">
-  <properties/>
-  <testcase name="testContactEmail" classname="ru.stqa.pft.addressbook.tests.ContactEmailTests" time="6.706"/>
-  <system-out><![CDATA[21:47:37.208 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start testtestContactEmail with parametrs []
-21:47:45.783 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop testtestContactEmail
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

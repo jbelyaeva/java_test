@@ -18,35 +18,47 @@ public class ContactData {
   @Id
   @Column(name="id")
   private int id;
+
   @Column(name="firstname")
   private  String name;
+
   @Column(name="lastname")
   private String lastname;
+
   @Column(name="address")
   @Type(type="text")
   private  String address;
+
   @Column(name="home")
   @Type(type="text")
   private  String homephone;
+
   @Column(name="mobile")
   @Type(type="text")
   private String mobilephone;
+
   @Column(name="work")
   @Type(type="text")
   private String workphone;
+
   @Column(name="email")
   @Type(type="text")
   private  String email1;
+
   @Column(name="email2")
   @Type(type="text")
   private  String email2;
+
   @Column(name="email3")
   @Type(type="text")
   private  String email3;
+
   @Transient
   private String allPhones;
+
   @Transient
   private String allEmails;
+
   @Transient
   @Column(name="photo")
   @Type(type="text")
@@ -54,32 +66,9 @@ public class ContactData {
 
   @ManyToMany(fetch=FetchType.EAGER)
   @JoinTable(name="address_in_groups", joinColumns = @JoinColumn(name = "id"),inverseJoinColumns = @JoinColumn(name="group_id"))
-  private Set<GroupData> groups=new HashSet<GroupData>();
+  //private Set<GroupData> groups=new HashSet<GroupData>();
+  private Set<GroupData> groups;
 
- public File getPhoto() {
-    return new File (photo);
-  }
-  public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
-    return this;
-  }
-
-  public String getAllPhones() {
-    return allPhones;
-  }
-//вытягивание в цепочку
-  public ContactData withAllPhones(String allPhones) {
-    this.allPhones = allPhones;
-    return this;
-  }
-  public String getAllEmails() {
-    return allEmails;
-  }
-
-  public ContactData withAllEmails(String allEmails) {
-    this.allEmails = allEmails;
-    return this;
-  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -168,10 +157,47 @@ public class ContactData {
     return email3;
   }
 
-  public Groups getGroups() {
-    return new Groups(groups);//множество превратить в объект типа Groups при этом создается копия
+  public File getPhoto() {
+    return new File (photo);
   }
-  // }
+  public ContactData withPhoto(File photo) {
+    this.photo = photo.getPath();
+    return this;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+  //вытягивание в цепочку
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  public Groups getGroups() {
+    return new Groups(getGroupSet());//множество превратить в объект типа Groups при этом создается копия
+  }
+  public ContactData inGroup(GroupData group){
+    groups.add(group);
+    return this;
+  }
+  //чтобы не возникал NullPointerExeption, когда множество groups null
+  //производим проверку условия и присваиваем и в этом случае groups = new HashSet<>()
+  protected Set<GroupData> getGroupSet() {
+    if (groups == null) {
+      groups = new HashSet<>();
+    }
+    return groups;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -214,8 +240,5 @@ public class ContactData {
             ", allEmails='" + allEmails + '\'' +
            '}';
   }
-  public ContactData inGroup(GroupData group){
-    groups.add(group);
-    return this;
-  }
+
 }

@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import net.bytebuddy.utility.RandomString;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -7,8 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.internal.GroupsHelper;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
@@ -42,6 +45,8 @@ public class ContactHelper extends HelperBase {
     if (contactData.getGroups().size()>0) {
       Assert.assertTrue(contactData.getGroups().size()==1);
      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+    }else if (creation && contactData.getGroups().size() == 0) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("[none]");
     }
     else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));}
@@ -196,4 +201,15 @@ public class ContactHelper extends HelperBase {
   public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
+
+  public Groups getGroupForContactCreation() {
+    Groups groups = new DbHelper().groups();
+    if (groups.size() == 0) {
+      GroupData group = new GroupData().withName("test 5");
+      new NavigationHelper(wd).groupPage();
+      new GroupHelper(wd).create(group);
+      groups = new DbHelper().groups();
+    }
+    return groups;
+    }
 }
