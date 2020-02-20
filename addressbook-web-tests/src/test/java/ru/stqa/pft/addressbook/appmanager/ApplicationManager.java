@@ -74,13 +74,13 @@ public class ApplicationManager {
   }
 
   //проверка перед созданием контакта на наличие хотя бы одной группы test1 c созданием ее в случае отсутствия
-  public void checkAndCreateGroup(GroupData group){
+ /* public void checkAndCreateGroup(GroupData group){
     goTo().groupPage();
     if (!group().isThereAGroup()){
       group().create(new GroupData().withName("test1"));
     }
     contact().gotohome();
-  }
+  }*/
   public DbHelper db(){
     return dbHelper;
   }

@@ -106,14 +106,7 @@ public class ContactHelper extends HelperBase {
     gotohome();
   }
 
-  public void createWithoutGgoup(ContactData contact) {
-    gotoAddNewContact();
-    fillContactFormWithoutGroup(contact);
-    submitContactCreation();
-    gotohome();
-  }
-
-  public void modify(ContactData contact) {
+   public void modify(ContactData contact) {
     selectContactsById(contact.getId());//выделить контакт для модификации
     selectContactModification(contact.getId()); //нажать карандаш
   //  fillContactForm(contact,false);//В БАЗЕ НЕТ ГРУППЫ
@@ -132,6 +125,29 @@ public class ContactHelper extends HelperBase {
     deleteSelectedContacts();
     assertTrueDeletionContacts();
   }
+
+  public void contactAddToGroup(ContactData contact, Groups groups) {
+    gotohome();
+    selectContactsById(contact.getId());
+    if (groups.size()>0) {
+      new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(groups.iterator().next().getName());
+    }else if (groups.size() == 0) {
+      new Select(wd.findElement(By.name("to_group"))).selectByVisibleText("[none]");
+    }
+    else {Assert.assertFalse(isElementPresent(By.name("to_group")));}
+    submitAddtoGroup();
+    userAdd();
+  //  gotohome();
+  }
+
+  private void userAdd() {
+    click(By.xpath(".//a[contains(text(),'group page')]"));
+  }
+
+  private void submitAddtoGroup() {
+    click(By.name("add"));
+  }
+
   public void gotohome() {
      click(By.linkText("home"));
    }

@@ -69,7 +69,6 @@ public class ContactData {
   //private Set<GroupData> groups=new HashSet<GroupData>();
   private Set<GroupData> groups;
 
-
   public ContactData withId(int id) {
     this.id = id;
     return this;

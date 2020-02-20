@@ -65,7 +65,7 @@ public class GroupData {
     return footer;
   }
 
-  @Override
+   @Override
   public String toString() {
     return "GroupData{" +
             "id='" + id + '\'' +
