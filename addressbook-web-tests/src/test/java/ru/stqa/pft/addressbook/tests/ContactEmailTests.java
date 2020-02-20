@@ -16,10 +16,11 @@ public class ContactEmailTests extends TestBase{
   @BeforeMethod
   public void ensurePreconditions (){
     //если не сущ ни одного контакта сначала создать его
-    if (app.contact().list().size()==0){
+
+    if (app.db().contacts().size()==0){
       //если не сущ ни одной группы,то создать группу, чтобы в последствии выбрать ее из выпадающего списка при создании контакта
       Groups groups=app.db().groups();
-      app.checkAndCreateGroup(new GroupData().withName("test1"));
+      String group = app.contact().getGroupForContactCreation().iterator().next().getName();
       app.contact().create(new ContactData().withName("Саша").withLastname("Сиванов")
               .withAddress("г. Москва ул.Строителей д.7 кв 9").withHomephone("1111111111111").withMobilephone("22222222222")
               .withEmail1("1111@11.com").withEmail2("222@gh.com").withEmail3("ghj@gh.ru").inGroup(groups.iterator().next()),true);
@@ -34,12 +35,12 @@ public class ContactEmailTests extends TestBase{
     ContactData contactInfoFromEditForm=app.contact().infoFromEditForm(contact);
     assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
   }
+
   private String mergeEmails(ContactData contact) {
     return Arrays.asList(contact.getEmail1(), contact.getEmail2(), contact.getEmail3())
-            .stream().filter((s)->!s.equals("")).map(ContactEmailTests::cleaned).collect(Collectors.joining("\n"));
+            .stream().filter((s)->!s.equals("")).collect(Collectors.joining("\n"));
   }
-  public static String cleaned (String phone){
-    return phone.replaceAll("\\s","").replaceAll("[@.]",""); //очищаем строку от мусора
-
-  }
+ /*public static String cleaned (String email){
+    return email.replaceAll("\\s","").replaceAll("[@._]",""); //очищаем строку от мусора
+  }*/
 }

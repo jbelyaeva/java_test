@@ -213,14 +213,12 @@ public class ContactData {
             Objects.equals(workphone, that.workphone) &&
             Objects.equals(email1, that.email1) &&
             Objects.equals(email2, that.email2) &&
-            Objects.equals(email3, that.email3) &&
-            Objects.equals(allPhones, that.allPhones) &&
-            Objects.equals(allEmails, that.allEmails);
+            Objects.equals(email3, that.email3);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, lastname, address, homephone, mobilephone, workphone, email1, email2, email3, allPhones, allEmails);
+    return Objects.hash(id, name, lastname, address, homephone, mobilephone, workphone, email1, email2, email3);
   }
 
   @Override
