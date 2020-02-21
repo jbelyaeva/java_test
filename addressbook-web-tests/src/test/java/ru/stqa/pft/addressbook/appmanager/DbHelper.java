@@ -5,22 +5,19 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.addressbook.model.*;
 
 import java.util.List;
 
 public class DbHelper {
   private final SessionFactory sessionFactory;
-  private final SessionFactory sessionFactory1;
+//  private final SessionFactory sessionFactory;
 
   public DbHelper () {
     final StandardServiceRegistry registry= new StandardServiceRegistryBuilder().configure().build();
-    final StandardServiceRegistry registry1= new StandardServiceRegistryBuilder().configure().build();
+//    final StandardServiceRegistry registry1= new StandardServiceRegistryBuilder().configure().build();
     sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-    sessionFactory1 = new MetadataSources(registry1).buildMetadata().buildSessionFactory();
+ //   sessionFactory1 = new MetadataSources(registry1).buildMetadata().buildSessionFactory();
     }
     public Groups groups() {
       Session session = sessionFactory.openSession();
@@ -31,12 +28,21 @@ public class DbHelper {
       return new Groups(result);
      }
     public Contacts contacts(){
-      Session session = sessionFactory1.openSession();
+      Session session = sessionFactory.openSession();
       session.beginTransaction();
       List<ContactData> result = session.createQuery("from ContactData ").list();
       session.getTransaction().commit();
       session.close();
       return new Contacts(result);
     }
+  public ContactData getContact(int id){
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<ContactData> result = session.createQuery("from ContactData where id = " + id + " and deprecated = '0000-00-00'").list();
+    session.getTransaction().commit();
+    session.close();
+    return new Contacts(result).iterator().next();
+  }
+
 
 }

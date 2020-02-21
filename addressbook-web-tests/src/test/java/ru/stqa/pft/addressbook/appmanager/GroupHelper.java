@@ -30,15 +30,19 @@ public class GroupHelper extends HelperBase {
   public void initGroupCreation() {
     click(By.name("new"));
   }
+
   public void deleteSelectedGroups( ) {
     click(By.name("delete"));
   }
-   public void selectGroupById(int id) {
+
+  public void selectGroupById(int id) {
     wd.findElement(By.cssSelector("input[value='"+id+"'")).click();
   }
+
   public void initGroupModification() {
     click(By.name("edit"));
   }
+
   public void submitGroupModification() {
     click(By.name("update"));
   }

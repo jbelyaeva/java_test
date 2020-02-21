@@ -13,22 +13,23 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
-
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
+
   public void submitContactCreation() {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
+
   public void click(By locator) {
     wd.findElement(locator).click();
   }
+
   public void fillContactForm(@NotNull ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getName());
     type(By.name("lastname"), contactData.getLastname());
@@ -40,19 +41,20 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
    // attach(By.name("photo"), contactData.getPhoto());
-  //  type(By.name("new_group"), contactData.getGroup());// нет в базе
+  //  type(By.name("new_group"), contactData.getGroup());
 
     if (contactData.getGroups().size()>0) {
-      Assert.assertTrue(contactData.getGroups().size()==1);
-     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
-    }else if (creation && contactData.getGroups().size() == 0) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("[none]");
+        Assert.assertTrue(contactData.getGroups().size()==1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+    }
+    else if (creation && contactData.getGroups().size() == 0) {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("[none]");
     }
     else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));}
+        Assert.assertFalse(isElementPresent(By.name("new_group")));}
     }
 
-  public void fillContactFormWithoutGroup(@NotNull ContactData contactData) {
+  /*public void fillContactForm(@NotNull ContactData contactData) {
     type(By.name("firstname"), contactData.getName());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("address"), contactData.getAddress());
@@ -63,22 +65,23 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     // attach(By.name("photo"), contactData.getPhoto());
-    // type(By.name("new_group"), contactData.getGroup());// нет в базе
-  }
+    // type(By.name("new_group"), contactData.getGroup());
+  }*/
 
-    public boolean isElementPresent(By locator){
+  public boolean isElementPresent(By locator){
        try {wd.findElement(locator);
             return true;}
        catch (NoSuchElementException ex){return false;}
-    }
+  }
 
-   public void gotoAddNewContact() {
+  public void gotoAddNewContact() {
     click(By.linkText("add new"));
   }
 
   public void selectContacts(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
    }
+
   public void selectContactsById(int id)  {
     wd.findElement(By.cssSelector("input[value='"+id+"'")).click();
   }
@@ -93,13 +96,14 @@ public class ContactHelper extends HelperBase {
 
   public void selectContactModification(int id) {
     wd.findElement(By.xpath("//a[@href=\"edit.php?id="+id+"\"]")).click();
-    }
+  }
 
   public void submitContactUpdate() {
     click(By.name("update"));
   }
 
-  public void create(ContactData contact, boolean b) {
+
+  public void create(ContactData contact,boolean b) {
     gotoAddNewContact();
     fillContactForm(contact,b);
     submitContactCreation();
@@ -109,8 +113,8 @@ public class ContactHelper extends HelperBase {
    public void modify(ContactData contact) {
     selectContactsById(contact.getId());//выделить контакт для модификации
     selectContactModification(contact.getId()); //нажать карандаш
-  //  fillContactForm(contact,false);//В БАЗЕ НЕТ ГРУППЫ
-    fillContactFormWithoutGroup(contact);
+    fillContactForm(contact,false);
+   // fillContactFormWithoutGroup(contact);
     submitContactUpdate();
     gotohome();
   }
@@ -126,18 +130,26 @@ public class ContactHelper extends HelperBase {
     assertTrueDeletionContacts();
   }
 
-  public void contactAddToGroup(ContactData contact, Groups groups) {
+  public void contactAddToGroup(ContactData contact, GroupData group) {
     gotohome();
     selectContactsById(contact.getId());
-    if (groups.size()>0) {
-      new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(groups.iterator().next().getName());
-    }else if (groups.size() == 0) {
-      new Select(wd.findElement(By.name("to_group"))).selectByVisibleText("[none]");
-    }
-    else {Assert.assertFalse(isElementPresent(By.name("to_group")));}
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
     submitAddtoGroup();
-    userAdd();
-  //  gotohome();
+    //userAdd();
+    gotohomelogo();
+  }
+
+  public void contactDeleteFromFroup(ContactData contact, GroupData group) {
+    gotohome();
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+    selectContactsById(contact.getId());
+    submitContactDeleteFromGroup();
+    //assertTrueDeletionContacts();
+    gotohomelogo();
+  }
+
+  private void gotohomelogo() {
+    click(By.xpath("//img[@src='title_x2.png']"));
   }
 
   private void userAdd() {
@@ -146,6 +158,10 @@ public class ContactHelper extends HelperBase {
 
   private void submitAddtoGroup() {
     click(By.name("add"));
+  }
+
+  private void  submitContactDeleteFromGroup() {
+    click(By.name("remove"));
   }
 
   public void gotohome() {
@@ -163,15 +179,16 @@ public class ContactHelper extends HelperBase {
   public List<ContactData> list() {
     List<ContactData> contacts= new ArrayList<ContactData>();
     List<WebElement> elements= wd.findElements(By.name("entry"));
-   for (WebElement element : elements) {
+    for (WebElement element : elements) {
          List<WebElement> cells= element.findElements(By.xpath("td"));
          String lastname =cells.get(1).getText();
          String name =cells.get(2).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withName(name).withLastname(lastname));
-   }
+         int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+         contacts.add(new ContactData().withId(id).withName(name).withLastname(lastname));
+    }
       return contacts;
   }
+
   public Contacts all() {
     Contacts contacts= new Contacts();
     List<WebElement> elements= wd.findElements(By.name("entry"));
@@ -228,4 +245,5 @@ public class ContactHelper extends HelperBase {
     }
     return groups;
     }
+
 }

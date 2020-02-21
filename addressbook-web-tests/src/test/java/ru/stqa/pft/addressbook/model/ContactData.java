@@ -185,10 +185,13 @@ public class ContactData {
     return new Groups(getGroupSet());//множество превратить в объект типа Groups при этом создается копия
   }
   public ContactData inGroup(GroupData group){
+    if (groups == null) {
+      groups = new HashSet<>();
+    }
     groups.add(group);
     return this;
   }
-  //чтобы не возникал NullPointerExeption, когда множество groups null
+ //чтобы не возникал NullPointerExeption, когда множество groups null
   //производим проверку условия и присваиваем и в этом случае groups = new HashSet<>()
   protected Set<GroupData> getGroupSet() {
     if (groups == null) {

@@ -28,8 +28,8 @@ public class ContactsCreationTests extends TestBase {
     String xml = "";
     String line =reader.readLine();
     while (line!=null){
-      xml+=line;
-      line = reader.readLine();
+           xml+=line;
+           line = reader.readLine();
     }
     XStream xStream=new XStream();
     xStream.processAnnotations(ContactData.class);

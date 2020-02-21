@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-21T16:50:40" hostname="DESKTOP-TKCAAQ5" time="0.71">
+  <properties/>
+  <testcase name="testGroupDeletion" classname="ru.stqa.pft.addressbook.tests.GroupDeletionTests" time="0.71"/>
+  <system-out><![CDATA[19:50:39.988 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start testtestGroupDeletion with parametrs []
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+19:50:41.521 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop testtestGroupDeletion
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
