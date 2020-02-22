@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.dbConnectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-21T16:50:43" hostname="DESKTOP-TKCAAQ5" time="0.025">
-  <properties/>
-  <testcase name="testdbConnection" classname="ru.stqa.pft.addressbook.tests.dbConnectionTest" time="0.025"/>
-  <system-out><![CDATA[[GroupData{id='220', name='test1'}, GroupData{id='221', name='test 0'}]
-[ContactData{id=243, name='Name0', lastname='LastName0', address='Address0', homephone='null', mobilephone='null', workphone='null', email1='null', email2='null', email3='null', allPhones='null', allEmails='null'}, ContactData{id=235, name='1', lastname='2', address='3', homephone='null', mobilephone='null', workphone='null', email1='null', email2='null', email3='null', allPhones='null', allEmails='null'}]
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

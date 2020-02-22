@@ -13,9 +13,7 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-
 public class ContactAddToGroupTests extends TestBase {
-
   private ContactData targetContact;
   private GroupData targetGroup;
 
@@ -58,13 +56,12 @@ public class ContactAddToGroupTests extends TestBase {
      app.contact().create(targetContact, true);
      app.goTo().groupPage();
      app.group().create(targetGroup);
+     //Перезапросить свежие данные, чтобы узнать id добавленных контакта и группы
+     contactSet =app.db().contacts();
+     groupSet =app.db().groups();
+    // targetContact.withId(contactSet.stream().mapToInt((c) ->c.getId()).max().getAsInt());
+    // targetGroup.withId(groupSet.stream().mapToInt((g) ->g.getId()).max().getAsInt());
    }
-
-  //Перезапросить свежие данные, чтобы узнать id добавленных контакта и группы
-  contactSet =app.db().contacts();
-  groupSet =app.db().groups();
-  targetContact.withId(contactSet.stream().mapToInt((c) ->c.getId()).max().getAsInt());
-  targetGroup.withId(groupSet.stream().mapToInt((g) ->g.getId()).max().getAsInt());
 }
 
  @Test
