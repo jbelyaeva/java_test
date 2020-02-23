@@ -34,7 +34,7 @@ public class HttpSession {
     post.setEntity(new UrlEncodedFormEntity(params));//заранее созданый запрос
     CloseableHttpResponse response=httpclient.execute(post);//запрос выполняется
     String body=geTextFrom(response);
-    return body.contains(String.format("<span class=\"italic\">%s</span>",username));
+    return body.contains(String.format("<span class=\"user-info\">%s</span>",username));
   }
 
   //получить текст ответа
@@ -50,6 +50,6 @@ public class HttpSession {
     HttpGet get=new HttpGet(app.getProperty("web.baseUrl")+"/index.php");//зайти на главную страницу
     CloseableHttpResponse response=httpclient.execute(get);
     String body=geTextFrom(response);
-    return  body.contains(String.format("<span class=\"italic\">%s</span>",username));
+    return  body.contains(String.format("<span class=\"user-info\">%s</span>",username));
   }
 }
