@@ -1,18 +1,16 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.By;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.appmanager.ContactHelper;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
-
 import java.util.stream.Collectors;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+
 public class ContactAddToGroupTests extends TestBase {
   private ContactData targetContact;
   private GroupData targetGroup;
