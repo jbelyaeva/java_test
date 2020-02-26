@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">13.335s</div>
+<div class="counter">11.694s</div>
 <p>duration</p>
 </div>
 </td>
@@ -64,7 +64,10 @@
 <a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Standard error</a>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
@@ -79,25 +82,82 @@
 </thead>
 <tr>
 <td class="success">testRegistration</td>
-<td class="success">13.335s</td>
+<td class="success">11.694s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
 <div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>16:00:12.391 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: AUTH
+16:00:12.398 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: DATA
+16:00:12.398 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: EHLO
+16:00:12.398 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: HELO
+16:00:12.399 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: HELP
+16:00:12.399 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: MAIL
+16:00:12.399 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: NOOP
+16:00:12.399 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: QUIT
+16:00:12.399 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: RCPT
+16:00:12.399 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: RSET
+16:00:12.400 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: STARTTLS
+16:00:12.400 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: VRFY
+16:00:12.400 [Test worker] INFO org.subethamail.smtp.server.SMTPServer - SMTP server *:25 starting
+16:00:12.407 [org.subethamail.smtp.server.ServerThread *:25] INFO org.subethamail.smtp.server.ServerThread - SMTP server *:25 started
+16:00:21.652 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - SMTP connection from 0:0:0:0:0:0:0:1/0:0:0:0:0:0:0:1, new connection count: 1
+16:00:21.653 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Server: 220 DESKTOP-TKCAAQ5 ESMTP SubEthaSMTP 3.1.7
+16:00:21.660 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Client: EHLO localhost
+16:00:21.660 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Server: 250-DESKTOP-TKCAAQ5
+250-8BITMIME
+250 Ok
+16:00:21.661 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Client: MAIL FROM:&lt;admin@example.com&gt;
+16:00:21.668 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+16:00:21.669 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Client: RCPT TO:&lt;user60@localhost.localdomain&gt;
+16:00:21.669 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.wiser.Wiser - Accepting mail from admin@example.com to user60@localhost.localdomain
+16:00:21.670 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+16:00:21.670 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Client: DATA
+16:00:21.670 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Server: 354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;
+16:00:21.678 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.wiser.Wiser - Delivering mail from admin@example.com to user60@localhost.localdomain
+16:00:21.685 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.wiser.Wiser - Creating message from data with 2745 bytes
+16:00:21.686 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+16:00:21.687 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Client: RSET
+16:00:21.687 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+16:00:21.690 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Client: QUIT
+16:00:21.690 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51625] DEBUG org.subethamail.smtp.server.Session - Server: 221 Bye
+16:00:21.694 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - SMTP connection from 0:0:0:0:0:0:0:1/0:0:0:0:0:0:0:1, new connection count: 1
+16:00:21.694 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Server: 220 DESKTOP-TKCAAQ5 ESMTP SubEthaSMTP 3.1.7
+16:00:21.695 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Client: EHLO localhost
+16:00:21.695 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Server: 250-DESKTOP-TKCAAQ5
+250-8BITMIME
+250 Ok
+16:00:21.696 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Client: MAIL FROM:&lt;admin@example.com&gt;
+16:00:21.696 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+16:00:21.697 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Client: RCPT TO:&lt;root@localhost&gt;
+16:00:21.697 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.wiser.Wiser - Accepting mail from admin@example.com to root@localhost
+16:00:21.697 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+16:00:21.698 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Client: DATA
+16:00:21.698 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Server: 354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;
+16:00:21.699 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.wiser.Wiser - Delivering mail from admin@example.com to root@localhost
+16:00:21.714 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.wiser.Wiser - Creating message from data with 844 bytes
+16:00:21.715 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+16:00:21.715 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Client: RSET
+16:00:21.715 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+16:00:21.718 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Client: QUIT
+16:00:21.718 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:51626] DEBUG org.subethamail.smtp.server.Session - Server: 221 Bye
+16:00:24.103 [Test worker] INFO org.subethamail.smtp.server.SMTPServer - SMTP server *:25 stopping
+16:00:24.103 [Test worker] DEBUG org.subethamail.smtp.server.ServerThread - SMTP Server socket shut down
+16:00:24.103 [org.subethamail.smtp.server.ServerThread *:25] INFO org.subethamail.smtp.server.ServerThread - SMTP server *:25 stopped
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-SLF4J: Failed to load class &quot;org.slf4j.impl.StaticMDCBinder&quot;.
-SLF4J: Defaulting to no-operation MDCAdapter implementation.
-SLF4J: See http://www.slf4j.org/codes.html#no_static_mdc_binder for further details.
-Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 28643
+<pre>Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 22625
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-[1582689497.773][WARNING]: Timed out connecting to Chrome, retrying...
-фев 26, 2020 6:58:19 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+[1582722016.847][WARNING]: Timed out connecting to Chrome, retrying...
+фев 26, 2020 4:00:18 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 </pre>
 </span>
@@ -110,7 +170,7 @@ INFO: Detected dialect: W3C
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.0.1</a> at 26.02.2020 6:58:27</p>
+<a href="http://www.gradle.org">Gradle 6.0.1</a> at 26.02.2020 16:00:25</p>
 </div>
 </div>
 </body>
