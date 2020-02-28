@@ -1,27 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.mantis.tests.RegistrationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-27T07:05:09" hostname="DESKTOP-TKCAAQ5" time="75.737">
+<testsuite name="ru.stqa.pft.mantis.tests.RegistrationTests" tests="1" skipped="1" failures="0" errors="0" timestamp="2020-02-28T04:55:11" hostname="DESKTOP-TKCAAQ5" time="55.692">
   <properties/>
-  <testcase name="testRegistration" classname="ru.stqa.pft.mantis.tests.RegistrationTests" time="75.737"/>
-  <system-out><![CDATA[JAMES Remote Administration Tool 2.2.0
-Please enter your login and password
-Login id:
-
-Password:
-
-Login failed for 
-Login id:root
-
-Password:root
-
-Welcome root. HELP for a list of commandsadduser user-1582787109264 password
-
-User user-1582787109264 addedquit
+  <testcase name="testRegistration" classname="ru.stqa.pft.mantis.tests.RegistrationTests" time="55.692">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: AUTH
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: DATA
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: EHLO
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: HELO
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: HELP
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: MAIL
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: NOOP
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: QUIT
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: RCPT
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: RSET
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: STARTTLS
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: VRFY
+07:55:11.735 [Test worker] INFO org.subethamail.smtp.server.SMTPServer - SMTP server *:25 starting
+07:55:11.738 [org.subethamail.smtp.server.ServerThread *:25] INFO org.subethamail.smtp.server.ServerThread - SMTP server *:25 started
+07:55:21.375 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - SMTP connection from 0:0:0:0:0:0:0:1/0:0:0:0:0:0:0:1, new connection count: 1
+07:55:21.375 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 220 DESKTOP-TKCAAQ5 ESMTP SubEthaSMTP 3.1.7
+07:55:21.383 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: EHLO localhost
+07:55:21.383 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250-DESKTOP-TKCAAQ5
+250-8BITMIME
+250 Ok
+07:55:21.384 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: MAIL FROM:<admin@example.com>
+07:55:21.391 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.391 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: RCPT TO:<user-1582865711739@localhost.localdomain>
+07:55:21.391 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.wiser.Wiser - Accepting mail from admin@example.com to user-1582865711739@localhost.localdomain
+07:55:21.392 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.392 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: DATA
+07:55:21.392 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 354 End data with <CR><LF>.<CR><LF>
+07:55:21.399 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.wiser.Wiser - Delivering mail from admin@example.com to user-1582865711739@localhost.localdomain
+07:55:21.406 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.wiser.Wiser - Creating message from data with 2781 bytes
+07:55:21.407 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.409 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: RSET
+07:55:21.409 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.411 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: QUIT
+07:55:21.411 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 221 Bye
+07:55:21.413 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - SMTP connection from 0:0:0:0:0:0:0:1/0:0:0:0:0:0:0:1, new connection count: 1
+07:55:21.413 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 220 DESKTOP-TKCAAQ5 ESMTP SubEthaSMTP 3.1.7
+07:55:21.413 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: EHLO localhost
+07:55:21.414 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250-DESKTOP-TKCAAQ5
+250-8BITMIME
+250 Ok
+07:55:21.414 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: MAIL FROM:<admin@example.com>
+07:55:21.414 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: RCPT TO:<root@localhost>
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.wiser.Wiser - Accepting mail from admin@example.com to root@localhost
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: DATA
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 354 End data with <CR><LF>.<CR><LF>
+07:55:21.416 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.wiser.Wiser - Delivering mail from admin@example.com to root@localhost
+07:55:21.430 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.wiser.Wiser - Creating message from data with 871 bytes
+07:55:21.430 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.430 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: RSET
+07:55:21.430 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.432 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: QUIT
+07:55:21.432 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 221 Bye
 ]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 30746
+  <system-err><![CDATA[Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 6261
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-[1582787113.584][WARNING]: Timed out connecting to Chrome, retrying...
-фев 27, 2020 10:05:15 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+[1582865714.450][WARNING]: This version of ChromeDriver has not been tested with Chrome version 80.
+[1582865716.453][WARNING]: Timed out connecting to Chrome, retrying...
+фев 28, 2020 7:55:18 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>

@@ -1,6 +1,8 @@
 package ru.stqa.pft.mantis.appmanager;
+import org.hibernate.sql.SelectValues;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import ru.stqa.pft.mantis.model.UserData;
 
 public class RegistrationHelper extends HelperBase {
   public RegistrationHelper(ApplicationManager app) {

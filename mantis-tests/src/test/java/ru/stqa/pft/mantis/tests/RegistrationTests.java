@@ -5,15 +5,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.model.MailMassage;
-
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
-
+//сделаем тест на реистрацию опять через внутрений почтовый сервер, чтоб не падал без запуска james
 public class RegistrationTests extends TestBase{
- // @BeforeMethod
+  @BeforeMethod
   public void startMailServer(){
     app.mail().start();
   }
@@ -22,10 +21,12 @@ public class RegistrationTests extends TestBase{
     long now = System.currentTimeMillis();
     String user = String.format("user-%s", now);
     String password = "password";
-    String email = String.format("user-%s@localhost", now);
-    app.james().createUser(user, password);
+//    String email = String.format("user-%s@localhost", now);//
+    String email = String.format("user-%s@localhost.localdomain", now);
+  //  app.james().createUser(user, password);
     app.registration().start(user, email);
-    List<MailMassage> mailMassages= app.james().waitForMail(user,password,120000);
+  //  List<MailMassage> mailMassages= app.james().waitForMail(user,password,120000);
+    List<MailMassage> mailMassages= app.mail().waitForMail(2,10000);
     String confirmationLink = findConfirmationLink(mailMassages, email);
     app.registration().finish(confirmationLink, password);
     assertTrue(app.newSession().login(user,password));
@@ -37,7 +38,7 @@ public class RegistrationTests extends TestBase{
    return regex.getText(mailMassage.text);
   }
 
- // @AfterMethod(alwaysRun = true)
+  @AfterMethod(alwaysRun = true)
   public void stoptMailServer(){
     app.mail().stop();
   }

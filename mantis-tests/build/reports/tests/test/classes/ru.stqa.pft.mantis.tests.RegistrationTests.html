@@ -35,13 +35,13 @@
 </td>
 <td>
 <div class="infoBox" id="ignored">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>ignored</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1m15.74s</div>
+<div class="counter">55.692s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox skipped" id="successRate">
+<div class="percent">-</div>
 <p>successful</p>
 </div>
 </td>
@@ -81,40 +81,81 @@
 </tr>
 </thead>
 <tr>
-<td class="success">testRegistration</td>
-<td class="success">1m15.74s</td>
-<td class="success">passed</td>
+<td class="skipped">testRegistration</td>
+<td class="skipped">-</td>
+<td class="skipped">ignored</td>
 </tr>
 </table>
 </div>
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>JAMES Remote Administration Tool 2.2.0
-Please enter your login and password
-Login id:
-
-Password:
-
-Login failed for 
-Login id:root
-
-Password:root
-
-Welcome root. HELP for a list of commandsadduser user-1582787109264 password
-
-User user-1582787109264 addedquit
+<pre>07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: AUTH
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: DATA
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: EHLO
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: HELO
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: HELP
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: MAIL
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: NOOP
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: QUIT
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: RCPT
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: RSET
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: STARTTLS
+07:55:11.735 [Test worker] DEBUG org.subethamail.smtp.server.CommandHandler - Added command: VRFY
+07:55:11.735 [Test worker] INFO org.subethamail.smtp.server.SMTPServer - SMTP server *:25 starting
+07:55:11.738 [org.subethamail.smtp.server.ServerThread *:25] INFO org.subethamail.smtp.server.ServerThread - SMTP server *:25 started
+07:55:21.375 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - SMTP connection from 0:0:0:0:0:0:0:1/0:0:0:0:0:0:0:1, new connection count: 1
+07:55:21.375 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 220 DESKTOP-TKCAAQ5 ESMTP SubEthaSMTP 3.1.7
+07:55:21.383 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: EHLO localhost
+07:55:21.383 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250-DESKTOP-TKCAAQ5
+250-8BITMIME
+250 Ok
+07:55:21.384 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: MAIL FROM:&lt;admin@example.com&gt;
+07:55:21.391 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.391 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: RCPT TO:&lt;user-1582865711739@localhost.localdomain&gt;
+07:55:21.391 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.wiser.Wiser - Accepting mail from admin@example.com to user-1582865711739@localhost.localdomain
+07:55:21.392 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.392 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: DATA
+07:55:21.392 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;
+07:55:21.399 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.wiser.Wiser - Delivering mail from admin@example.com to user-1582865711739@localhost.localdomain
+07:55:21.406 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.wiser.Wiser - Creating message from data with 2781 bytes
+07:55:21.407 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.409 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: RSET
+07:55:21.409 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.411 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Client: QUIT
+07:55:21.411 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59365] DEBUG org.subethamail.smtp.server.Session - Server: 221 Bye
+07:55:21.413 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - SMTP connection from 0:0:0:0:0:0:0:1/0:0:0:0:0:0:0:1, new connection count: 1
+07:55:21.413 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 220 DESKTOP-TKCAAQ5 ESMTP SubEthaSMTP 3.1.7
+07:55:21.413 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: EHLO localhost
+07:55:21.414 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250-DESKTOP-TKCAAQ5
+250-8BITMIME
+250 Ok
+07:55:21.414 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: MAIL FROM:&lt;admin@example.com&gt;
+07:55:21.414 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: RCPT TO:&lt;root@localhost&gt;
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.wiser.Wiser - Accepting mail from admin@example.com to root@localhost
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: DATA
+07:55:21.415 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 354 End data with &lt;CR&gt;&lt;LF&gt;.&lt;CR&gt;&lt;LF&gt;
+07:55:21.416 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.wiser.Wiser - Delivering mail from admin@example.com to root@localhost
+07:55:21.430 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.wiser.Wiser - Creating message from data with 871 bytes
+07:55:21.430 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.430 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: RSET
+07:55:21.430 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 250 Ok
+07:55:21.432 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Client: QUIT
+07:55:21.432 [org.subethamail.smtp.server.Session-/0:0:0:0:0:0:0:1:59366] DEBUG org.subethamail.smtp.server.Session - Server: 221 Bye
 </pre>
 </span>
 </div>
 <div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 30746
+<pre>Starting ChromeDriver 79.0.3945.36 (3582db32b33893869b8c1339e8f4d9ed1816f143-refs/branch-heads/3945@{#614}) on port 6261
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-[1582787113.584][WARNING]: Timed out connecting to Chrome, retrying...
-фев 27, 2020 10:05:15 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+[1582865714.450][WARNING]: This version of ChromeDriver has not been tested with Chrome version 80.
+[1582865716.453][WARNING]: Timed out connecting to Chrome, retrying...
+фев 28, 2020 7:55:18 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 </pre>
 </span>
@@ -127,7 +168,7 @@ INFO: Detected dialect: W3C
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.0.1</a> at 27.02.2020 10:06:25</p>
+<a href="http://www.gradle.org">Gradle 6.0.1</a> at 28.02.2020 7:56:07</p>
 </div>
 </div>
 </body>
