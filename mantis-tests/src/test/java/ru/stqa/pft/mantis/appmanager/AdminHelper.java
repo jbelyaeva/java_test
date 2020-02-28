@@ -15,7 +15,8 @@ public class AdminHelper extends HelperBase {
     click(By.xpath("//a[@href='/mantisbt-2.23.0/manage_overview_page.php']"));
     click(By.xpath("//a[@href='/mantisbt-2.23.0/manage_user_page.php']"));
     click(By.xpath("//a[@href='manage_user_edit_page.php?user_id="+id+"']"));
-    click(By.xpath("//input[@class='btn btn-primary btn-white btn-round']"));
+   //click(By.xpath("//fieldset/span/input"));
+    wd.findElement(By.xpath("//fieldset/span/input")).click();
     //   click(By.xpath("//span[@class='user-info']"));
     //  click(By.xpath("//input[@class='/mantisbt-2.23.0/logout_page.php']"));
 

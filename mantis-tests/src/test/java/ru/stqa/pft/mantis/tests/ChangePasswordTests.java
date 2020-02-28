@@ -16,6 +16,8 @@ public class ChangePasswordTests extends TestBase{
   private String targetUserName;
   private int targetUserId;
   private String targetUserPassword;
+  private String targetUserMail;
+
 
   @BeforeMethod
   public void startMailServer(){
@@ -27,17 +29,18 @@ public class ChangePasswordTests extends TestBase{
       targetUserName=user.getUsername();
       targetUserId=user.getId();
       targetUserPassword=user.getPassword();
+      targetUserMail=user.getEmail();
   }
 
   @Test
   public void testChangePassword() throws IOException, MessagingException {
 
     app.doingAdmin().startChange("administrator", "root",targetUserId);
-    List<MailMassage> mailMassages = app.mail().waitForMail(3,10000);
+    List<MailMassage> mailMassages = app.mail().waitForMail(1,10000);
 
- /*   String confirmationLink = findConfirmationLink(mailMassages, email);
-    app.registration().finish(confirmationLink, password);
-    assertTrue(app.newSession().login(user,password));*/
+   String confirmationLink = findConfirmationLink(mailMassages, targetUserMail);
+    app.registration().finish(confirmationLink, "111111");
+    assertTrue(app.newSession().login(targetUserName,"111111"));
   }
 
   private String findConfirmationLink(List<MailMassage> mailMassages, String email) {
