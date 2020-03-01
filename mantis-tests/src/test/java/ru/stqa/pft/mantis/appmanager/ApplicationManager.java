@@ -25,6 +25,7 @@ public class ApplicationManager {
   private JamesHelper jamesHelper;
   private DbHelper dbHelper;
   private AdminHelper adminHelper;
+  private SoapHelper soapHelper;
 
 
   public ApplicationManager(String browser) {
@@ -97,5 +98,12 @@ public HttpSession newSession(){
   }
   public DbHelper db(){
     return dbHelper;
+  }
+
+  public SoapHelper soap (){
+    if(soapHelper==null){
+      soapHelper= new SoapHelper(this);
+    }
+    return soapHelper;
   }
 }
