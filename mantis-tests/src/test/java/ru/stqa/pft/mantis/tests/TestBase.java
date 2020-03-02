@@ -1,5 +1,7 @@
 package ru.stqa.pft.mantis.tests;
 
+import biz.futureware.mantis.rpc.soap.client.IssueData;
+import biz.futureware.mantis.rpc.soap.client.MantisConnectLocator;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import biz.futureware.mantis.rpc.soap.client.ObjectRef;
 import org.openqa.selenium.remote.BrowserType;
@@ -14,6 +16,7 @@ import javax.xml.rpc.ServiceException;
 import java.io.File;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Set;
 
@@ -36,20 +39,17 @@ public class TestBase {
   }
 
   public static boolean isIssueOpen(int issueId) throws  MalformedURLException, ServiceException, RemoteException {
-
-    boolean isFixed = false;
-    Set<Project> projects = app.soap().getProject();
-    Issue issue = new Issue().withId(issueId);
-    MantisConnectPortType mc = app.soap().getMantisConnect();
-    ObjectRef status =  mc.mc_issue_get("administrator","root", BigInteger.valueOf(issueId)).getStatus();
-    if (status.getName().equals("fixed")) {
-      isFixed = true;
+    MantisConnectPortType mc = new MantisConnectLocator()
+            .getMantisConnectPort(new URL("http://localhost/mantisbt-2.23.0/api/soap/mantisconnect.php"));
+    IssueData issue = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
+    if (issue.getStatus().getName().equals("resolved")) {
+      return true;
     }
-    return isFixed;
+    return false;
   }
 
   public static void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    if (isIssueOpen(issueId)) {
+    if (!isIssueOpen(issueId)) {
       throw new SkipException("Ignored because of issue " + issueId);
     }
   }

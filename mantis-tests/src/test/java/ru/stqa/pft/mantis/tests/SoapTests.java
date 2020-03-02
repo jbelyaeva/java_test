@@ -14,7 +14,10 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Set;
 
+import static org.testng.Assert.assertTrue;
+
 public class SoapTests extends TestBase {
+  private int issueId=1;
   @Test
   public void testGetProjects() throws MalformedURLException, ServiceException, RemoteException {
       Set<Project> projects=app.soap().getProject();
@@ -30,5 +33,12 @@ public class SoapTests extends TestBase {
             .withDescription("Test issue description").withProject(projects.iterator().next());
     Issue created = app.soap().addIssue(issue);// создаем баг-репорт
     Assert.assertEquals(issue.getSummary(), created.getSummary());
+  }
+
+  @Test
+  public void testIssueStatus() throws MalformedURLException, ServiceException, RemoteException{
+
+    skipIfNotFixed(issueId);
+    assertTrue(isIssueOpen(issueId));
   }
 }
