@@ -9,41 +9,36 @@ import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.message.BasicNameValuePair;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+import static ru.stqa.pft.rest.tests.TestBase.isIssueOpen;
+import static ru.stqa.pft.rest.tests.TestBase.skipIfNotFixed;
 
-public class RestTest {
+public class RestTest extends TestBase {
+  public int Id=2535;
+
   @Test
   public void testCreateIssue() throws IOException {
     Set<Issue> oldIssues=getIssues();
-    Issue newIssue=new Issue().withSubject("Test issue111111111111111").withDescription("New test issue");
+    Issue newIssue=new Issue().withSubject("Test issue").withDescription("New test issue").withState_name("Resolved");
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues=getIssues();
     oldIssues.add(newIssue.withId(issueId));
    assertEquals(newIssues, oldIssues);
   }
-
-  private Set<Issue> getIssues() throws IOException {
-    String json = getExecutor().execute(Request.Get("https://bugify.stqa.ru/api/issues.json?limit=1000")).returnContent().asString();
-    JsonElement parsed = new JsonParser().parse(json);
-    JsonElement issues = parsed.getAsJsonObject().get("issues");
-    return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {}.getType());
-
+  @Test
+  public void testIssueStatus() throws IOException {
+    skipIfNotFixed(Id);
+    assertTrue(isIssueOpen(Id));
   }
 
-  private Executor getExecutor(){
-    return Executor.newInstance().auth("288f44776e7bec4bf44fdfeb1e646490", "");
-  }
 
-  private int createIssue(Issue newIssue) throws IOException {
-    String json = getExecutor().execute(Request.Post("https://bugify.stqa.ru/api/issues.json?limit=1000")
-            .bodyForm(new BasicNameValuePair("subject", newIssue.getSubject()),
-                    new BasicNameValuePair("description", newIssue.getDescription()))).returnContent().asString();
-    JsonElement parsed = new JsonParser().parse(json);//анализируем строчку
-    return parsed.getAsJsonObject().get("issue_id").getAsInt();//идентификатор баг-репортера
-  }
 }
